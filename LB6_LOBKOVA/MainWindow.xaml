@@ -1,0 +1,46 @@
+﻿<Window x:Class="LB6_LOBKOVA.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:LB6_LOBKOVA"
+        Title="Municipal Management" Height="500" Width="800" MinHeight="500" MinWidth="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" VerticalAlignment="Top" Margin="10">
+            <TextBox x:Name="SearchInput" Tag="Введите критерий поиска" 
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Foreground="Gray" Margin="5" Height="30"/>
+            <Button Content="Поиск" Click="Search_Click" Margin="5" Height="40"/>
+            <Button Content="Отобразить записи" Click="DisplayAll_Click" Margin="5" Height="40"/>
+            <Button Content="Добавить запись" Click="Add_Click" Margin="5" Height="40"/>
+            <Button Content="Изменить запись" Click="Edit_Click" Margin="5" Height="40"/>
+            <Button Content="Удалить запись" Click="Delete_Click" Margin="5" Height="40"/>
+        </StackPanel>
+
+        <ListView x:Name="RecordList" Grid.Column="1" Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                    <GridViewColumn Header="Департамент" DisplayMemberBinding="{Binding Department}" Width="200"/>
+                    <GridViewColumn Header="Бюджет" DisplayMemberBinding="{Binding Budget}" Width="120"/>
+                    <GridViewColumn Header="Сотрудники" DisplayMemberBinding="{Binding Employees}" Width="120"/>
+                    <GridViewColumn Header="Менеджер" DisplayMemberBinding="{Binding Manager}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Column="1" Margin="10,320,10,10" Orientation="Vertical" Visibility="Collapsed" x:Name="InputPanel">
+            <TextBox x:Name="DepartmentInput" Tag="Введите департамент"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Foreground="Gray" />
+            <TextBox x:Name="BudgetInput" Tag="Введите бюджет"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Foreground="Gray" />
+            <TextBox x:Name="EmployeesInput" Tag="Введите количество сотрудников"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Foreground="Gray" />
+            <TextBox x:Name="ManagerInput" Tag="Введите менеджера"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Foreground="Gray" />
+            <Button Content="Сохранить" Click="SaveRecord_Click" Height="30" Margin="0,5"/>
+        </StackPanel>
+    </Grid>
+</Window>
